@@ -1,12 +1,12 @@
-# GTA V Trofeos PS5 — PWA
+# GTA V Trofeos — PWA V3
+Sube **todo el contenido de esta carpeta** a la raíz del repositorio `GTAV-Trophies`, sustituyendo los archivos anteriores.
 
-Paquete listo para publicar como sitio estático.
+Incluye:
+- Road to Platinum separado del total con DLC.
+- Tracker de trofeos.
+- Trackers individuales de saltos, piezas, cartas, puentes, vuelos a cuchillo, residuos y Epsilon.
+- Mapa interactivo online integrado + apertura externa.
+- Copia de seguridad.
+- PWA offline y actualización de caché v3.1.
 
-## GitHub Pages
-1. Crea un repositorio nuevo.
-2. Sube **todo el contenido de esta carpeta** a la raíz del repositorio.
-3. Settings → Pages → Build and deployment → Deploy from a branch.
-4. Selecciona `main` y `/ (root)` → Save.
-5. Abre la URL de Pages en Safari (iPhone) → Compartir → Añadir a pantalla de inicio.
-
-La app guarda la checklist en localStorage y el service worker permite uso offline tras la primera carga.
+Tras publicar en GitHub Pages, abre la app una vez con conexión. Si iOS conserva una versión antigua, cierra la PWA completamente y vuelve a abrirla.

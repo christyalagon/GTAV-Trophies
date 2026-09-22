@@ -1,115 +1,92 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#0b0f0c"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="GTA V Trofeos">
-<title>GTA V · Trofeos PS5</title>
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090d0a"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="GTA V Trofeos">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/icon-180.png">
+<title>GTA V · Road to Platinum</title>
 <style>
-:root{--bg:#090d0a;--card:#121814;--card2:#18201a;--line:#29332c;--txt:#f5f6f5;--mut:#96a098;--g:#a8c83e;--gold:#d7ad3c;--red:#e85d58;--blue:#6ea8ff}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent} html,body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif} body{min-height:100vh}
-header{position:sticky;top:0;z-index:5;background:rgba(9,13,10,.93);backdrop-filter:blur(18px);padding:calc(env(safe-area-inset-top) + 12px) 16px 12px;border-bottom:1px solid #1d251f}
-.wrap{max-width:760px;margin:auto} .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:23px;font-weight:850;letter-spacing:-.5px} .logo b{color:var(--g)} .small{font-size:12px;color:var(--mut)}
-.ring{font-weight:800;color:var(--g);font-size:17px}
-.progress{height:7px;background:#202821;border-radius:20px;overflow:hidden;margin-top:12px} #bar{height:100%;background:var(--g);width:0;transition:.25s}
-nav{display:flex;gap:7px;overflow:auto;padding-top:11px;scrollbar-width:none} nav::-webkit-scrollbar{display:none}
-.chip{border:1px solid var(--line);background:#121814;color:#cbd1cc;border-radius:999px;padding:8px 12px;white-space:nowrap;font-size:13px;font-weight:650}
-.chip.on{background:var(--g);color:#10130e;border-color:var(--g)}
-main{padding:16px 16px calc(85px + env(safe-area-inset-bottom));max-width:760px;margin:auto}
-.hero{background:linear-gradient(145deg,#151d17,#0f1511);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:16px}
-.hero h2{font-size:17px;margin:0 0 5px} .hero p{font-size:13px;color:var(--mut);line-height:1.45;margin:0}
-.search{width:100%;border:1px solid var(--line);background:#111713;color:white;border-radius:14px;padding:13px 14px;font-size:16px;outline:none;margin-bottom:14px}
-.section{margin:22px 0 9px;display:flex;justify-content:space-between;align-items:end} .section h2{font-size:18px;margin:0} .section span{color:var(--mut);font-size:12px}
-.item{display:flex;gap:12px;padding:14px 12px;background:var(--card);border:1px solid var(--line);border-radius:16px;margin:8px 0;align-items:flex-start}
-.item.done{opacity:.48} .item.done .nm{text-decoration:line-through}
-.check{appearance:none;width:25px;height:25px;border:2px solid #5b675e;border-radius:8px;flex:none;margin:1px 0 0;display:grid;place-items:center}
-.check:checked{background:var(--g);border-color:var(--g)} .check:checked:after{content:"✓";color:#10140e;font-weight:900;font-size:17px}
-.body{min-width:0;flex:1} .nm{font-weight:780;font-size:15px;line-height:1.2} .ds{font-size:12.5px;color:var(--mut);line-height:1.4;margin-top:4px}
-.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px} .badge{font-size:10px;font-weight:800;padding:3px 7px;border-radius:7px;background:#222b24;color:#bac3bc}
-.badge.miss{background:#4b211f;color:#ffaaa6} .badge.story{background:#1c304a;color:#a9ceff} .badge.gold{background:#463b1c;color:#f1d77e}
-.empty{text-align:center;color:var(--mut);padding:50px 15px}
-.fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:6;border:0;background:var(--g);color:#10140e;width:52px;height:52px;border-radius:18px;font-size:22px;box-shadow:0 8px 30px #0008}
-.sheet{display:none;position:fixed;inset:0;z-index:10;background:#0009;align-items:flex-end} .sheet.open{display:flex}
-.panel{width:100%;max-width:760px;margin:auto;background:#111713;border-radius:24px 24px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom));border:1px solid var(--line)}
-.panel h3{margin:0 0 12px} .btn{width:100%;padding:13px;border-radius:13px;border:1px solid var(--line);background:#19211b;color:white;font-weight:700;margin:5px 0}
-textarea{width:100%;height:90px;background:#0b100c;color:#ddd;border:1px solid var(--line);border-radius:12px;padding:10px}
-.note{font-size:11px;color:var(--mut);line-height:1.4;margin-top:10px}
-</style></head>
-<body>
-<header><div class="wrap">
-<div class="top"><div><div class="logo">GTA <b>V</b> · PS5</div><div class="small" id="stat">0 / 78 trofeos</div></div><div class="ring" id="pct">0%</div></div>
-<div class="progress"><div id="bar"></div></div>
-<nav id="nav">
-<button class="chip on" data-f="all">Todos</button><button class="chip" data-f="pending">Pendientes</button>
-<button class="chip" data-f="missable">⚠️ Perdibles</button><button class="chip" data-f="offline">Historia/Offline</button>
-<button class="chip" data-f="online">Online</button><button class="chip" data-f="dlc">DLC</button>
-</nav></div></header>
+:root{--bg:#080c09;--card:#121814;--card2:#182019;--line:#29332c;--txt:#f4f6f4;--mut:#98a29a;--g:#a9ca3e;--red:#ff6b62;--blue:#7bb0ff;--gold:#e3bd54}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}button,input{font:inherit}
+header{position:sticky;top:0;z-index:20;background:#090d0aee;backdrop-filter:blur(18px);padding:calc(env(safe-area-inset-top) + 10px) 14px 8px;border-bottom:1px solid #1d251f}
+.top{max-width:780px;margin:auto;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900;font-size:21px}.brand b{color:var(--g)}.pct{font-weight:900;color:var(--g)}.prog{max-width:780px;margin:9px auto 0;height:6px;background:#202821;border-radius:9px;overflow:hidden}#bar{height:100%;background:var(--g)}
+main{max-width:780px;margin:auto;padding:14px 14px calc(92px + env(safe-area-inset-bottom))}.page{display:none}.page.on{display:block}
+.hero,.card{background:linear-gradient(145deg,#151d17,#101511);border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:11px}.hero h1{font-size:24px;margin:0 0 5px}.mut{color:var(--mut);font-size:13px;line-height:1.45}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px}.stat strong{font-size:22px;display:block}.stat span{font-size:11px;color:var(--mut)}
+.priority{border-color:#5a2926;background:#201311}.priority b{color:#ffaaa5}h2{font-size:18px;margin:22px 2px 9px}h3{margin:0 0 5px;font-size:16px}
+.item{display:flex;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px;margin:7px 0}.item.done{opacity:.48}.item.done .nm{text-decoration:line-through}.check{appearance:none;width:24px;height:24px;border:2px solid #606b62;border-radius:7px;flex:none}.check:checked{background:var(--g);border-color:var(--g)}.check:checked:after{content:"✓";display:grid;place-items:center;color:#10140e;font-weight:900}
+.nm{font-weight:780;font-size:14px}.ds{color:var(--mut);font-size:12px;margin-top:3px;line-height:1.35}.tag{display:inline-block;font-size:9px;font-weight:850;padding:3px 6px;border-radius:6px;background:#283128;color:#c7cec8;margin-top:6px}.danger{background:#4b211f;color:#ffaaa5}
+.search{width:100%;padding:13px;background:#111713;border:1px solid var(--line);color:#fff;border-radius:14px;font-size:16px;margin-bottom:10px}.filters{display:flex;gap:6px;overflow:auto;margin-bottom:12px}.chip{white-space:nowrap;border:1px solid var(--line);background:#121814;color:#ccd2cd;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:700}.chip.on{background:var(--g);color:#111;border-color:var(--g)}
+.hunt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin:9px 0}.hunthead{display:flex;justify-content:space-between;align-items:center}.count{font-weight:900;color:var(--g)}.mini{height:5px;background:#283029;border-radius:5px;overflow:hidden;margin:10px 0}.mini i{display:block;height:100%;background:var(--g)}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}.num{border:1px solid #354039;background:#171e19;color:#dce1dd;border-radius:9px;padding:9px 2px;font-size:12px;font-weight:750}.num.done{background:var(--g);border-color:var(--g);color:#111}
+.actions{display:flex;gap:7px;margin-top:10px}.btn{border:1px solid var(--line);background:#1a221c;color:#fff;border-radius:11px;padding:10px 11px;font-weight:700;font-size:12px;text-decoration:none;display:inline-block}.btn.primary{background:var(--g);color:#10140e;border-color:var(--g)}
+.mapframe{width:100%;height:58vh;border:1px solid var(--line);border-radius:17px;background:#111}.maplinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.maplinks a{text-align:center}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#0b100ded;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}.nav{border:0;background:none;color:#89938b;font-size:10px;font-weight:700;min-width:66px;padding:5px}.nav b{display:block;font-size:21px;margin-bottom:2px}.nav.on{color:var(--g)}
+textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid var(--line);border-radius:11px;padding:9px}.note{font-size:11px;color:var(--mut)}.hidden{display:none}
+</style></head><body>
+<header><div class="top"><div><div class="brand">GTA <b>V</b> · ROAD TO PLATINUM</div><div class="mut" id="headline"></div></div><div class="pct" id="pct"></div></div><div class="prog"><div id="bar"></div></div></header>
 <main>
-<div class="hero"><h2>🎯 Tu ruta al 100 %</h2><p><b>Prioridad:</b> Acólito altruista. Ya tienes Ejército de tres hombres y Se busca con o con vida. Evita trucos durante las sesiones en las que quieras desbloquear trofeos.</p></div>
-<input id="search" class="search" placeholder="🔎 Buscar trofeo…">
-<div id="list"></div>
+<section class="page on" id="home">
+<div class="hero"><h1>🏆 Tu partida</h1><div class="mut">Tracker local para PS5. Trofeos, coleccionables y objetivos de exploración en un solo sitio.</div></div>
+<div class="grid"><div class="stat"><strong id="platstat">0/51</strong><span>Camino al platino</span></div><div class="stat"><strong id="allstat">0/78</strong><span>Total con DLC</span></div><div class="stat"><strong id="huntstat">0%</strong><span>Coleccionables</span></div><div class="stat"><strong id="missstat">0</strong><span>Perdibles pendientes</span></div></div>
+<h2>Qué hacer ahora</h2><div class="card priority"><h3>⚠️ <b>Acólito altruista</b></h3><div class="mut">Es tu prioridad actual: entrega con Trevor una víctima válida al Culto Altruista antes de agotar los eventos adecuados.</div></div>
+<div class="card"><h3>🧭 Después</h3><div class="mut">Puedes ir limpiando saltos, piezas de nave y fragmentos de carta por zonas. En la pestaña <b>Objetivos</b> tienes contadores individuales y en <b>Mapa</b> un mapa interactivo externo.</div></div>
+<h2>Progreso de búsquedas</h2><div id="homehunts"></div>
+</section>
+
+<section class="page" id="trophies"><input id="search" class="search" placeholder="🔎 Buscar trofeo…"><div class="filters" id="filters">
+<button class="chip on" data-f="platinum">Platino</button><button class="chip" data-f="pending">Pendientes</button><button class="chip" data-f="missable">⚠️ Perdibles</button><button class="chip" data-f="offline">Offline</button><button class="chip" data-f="online">Online</button><button class="chip" data-f="dlc">DLC</button><button class="chip" data-f="all">Todos</button></div><div id="trophylist"></div></section>
+
+<section class="page" id="hunts"><div class="hero"><h1>🧭 Objetivos y coleccionables</h1><div class="mut">Toca cada número cuando lo completes. El progreso queda guardado en este iPhone.</div></div><div id="huntlist"></div></section>
+
+<section class="page" id="map"><div class="hero"><h1>🗺️ Mapa de búsqueda</h1><div class="mut">Mapa interactivo de terceros con ubicaciones de saltos, piezas, cartas, residuos, puentes y vuelos a cuchillo. Necesita conexión.</div></div>
+<div class="maplinks">
+<a class="btn primary" target="_blank" href="https://progressbar.gg/gta5/map/">Abrir mapa interactivo</a>
+<a class="btn" target="_blank" href="https://gta-5-map.com/">Mapa alternativo</a>
+</div>
+<iframe class="mapframe" src="https://progressbar.gg/gta5/map/" loading="lazy" title="Mapa interactivo GTA V"></iframe>
+<div class="note">Si el mapa no permite mostrarse dentro de la app por restricciones del proveedor, usa “Abrir mapa interactivo”.</div></section>
+
+<section class="page" id="data"><div class="hero"><h1>💾 Datos</h1><div class="mut">Copia de seguridad del progreso de trofeos y búsquedas.</div></div>
+<div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Guarda esta cadena en Notas si quieres poder restaurar el progreso.</div></div>
+<div class="card"><h3>Actualizaciones</h3><div class="mut">La PWA comprueba nuevas versiones del service worker. Si GitHub Pages publica una versión nueva, cierra y vuelve a abrir la app.</div><button class="btn" onclick="location.reload()">Buscar actualización</button></div>
+</section>
 </main>
-<button class="fab" onclick="sheet.classList.add('open')" aria-label="Opciones">•••</button>
-<div class="sheet" id="sheet" onclick="if(event.target===this)this.classList.remove('open')"><div class="panel">
-<h3>Datos de la checklist</h3>
-<button class="btn" onclick="exportData()">Copiar copia de seguridad</button>
-<button class="btn" onclick="importData()">Importar desde el cuadro inferior</button>
-<textarea id="backup" placeholder="Aquí aparecerá tu copia de seguridad…"></textarea>
-<button class="btn" onclick="resetData()">Reiniciar todas las marcas</button>
-<div class="note">El progreso se guarda en <b>localStorage</b> del navegador. Si borras los datos de Safari o abres otra copia/URL del archivo, el progreso puede no acompañarte. Usa la copia de seguridad antes de cambiar de dispositivo o ubicación.</div>
-<button class="btn" onclick="sheet.classList.remove('open')">Cerrar</button>
-</div></div>
+<nav class="bottom"><button class="nav on" data-page="home"><b>⌂</b>Inicio</button><button class="nav" data-page="trophies"><b>🏆</b>Trofeos</button><button class="nav" data-page="hunts"><b>✓</b>Objetivos</button><button class="nav" data-page="map"><b>🗺️</b>Mapa</button><button class="nav" data-page="data"><b>⚙️</b>Datos</button></nav>
 <script>
 const DATA=[{"id": 0, "cat": "base", "name": "Leyenda de Los Santos", "desc": "Consigue todos los trofeos del juego base.", "grade": "Platino", "pack": "base", "done": false, "story": false}, {"id": 1, "cat": "story", "name": "Bienvenido a Los Santos", "desc": "Embarga un coche y corre por el corazón de una soleada metrópolis.", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 2, "cat": "story", "name": "Una amistad resucitada", "desc": "Con amigos así, ¿quién necesita enemigos?", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 3, "cat": "story", "name": "Un sueldo justo", "desc": "Es hora de una escapadita.", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 4, "cat": "story", "name": "La hora de la verdad", "desc": "Has descubierto la verdad sobre Brad.", "grade": "Bronce", "pack": "base", "done": false, "story": true}, {"id": 5, "cat": "story", "name": "Vivir o morir en Los Santos", "desc": "Completa la misión final.", "grade": "Plata", "pack": "base", "done": false, "story": true}, {"id": 6, "cat": "story", "name": "Duro como el diamante", "desc": "Desvalija Vangelico para pagar a Martín Madrazo.", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 7, "cat": "story", "name": "Subversivo", "desc": "Roba una superarma experimental a Merryweather… y devuélvela.", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 8, "cat": "story", "name": "Bloqueado", "desc": "Lleva a cabo un bloqueo clásico.", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 9, "cat": "story", "name": "Pequeña ciudad, gran golpe", "desc": "Causa una gran impresión en Paleto Bay.", "grade": "Bronce", "pack": "base", "done": true, "story": true}, {"id": 10, "cat": "story", "name": "Los lacayos del gobierno", "desc": "Recupera información sensible de un edificio federal fuertemente defendido.", "grade": "Bronce", "pack": "base", "done": false, "story": true}, {"id": 11, "cat": "story", "name": "¡El grande!", "desc": "Completa el gran golpe.", "grade": "Bronce", "pack": "base", "done": false, "story": true}, {"id": 12, "cat": "offline", "name": "Oro puro, ¡nena!", "desc": "Consigue 70 medallas de oro en misiones y Extraños y locos.", "grade": "Oro", "pack": "base", "done": false, "story": false}, {"id": 13, "cat": "offline", "name": "Criminal profesional", "desc": "Alcanza el 100 % de progreso del juego.", "grade": "Oro", "pack": "base", "done": false, "story": false}, {"id": 14, "cat": "offline", "name": "Explorador de San Andreas", "desc": "Explora Los Santos y Blaine County.", "grade": "Plata", "pack": "base", "done": false, "story": false}, {"id": 15, "cat": "offline", "name": "Guerra y paz a la carrera", "desc": "Compra Downtown Cab Co. y completa una carrera privada.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 16, "cat": "missable", "name": "Carrera armamentística de TP Industries", "desc": "Compra McKenzie Field Hangar con Trevor y completa las misiones de tráfico de armas.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 17, "cat": "offline", "name": "Multidisciplinar", "desc": "Consigue una medalla de oro en todos los hobbies y pasatiempos aplicables.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 18, "cat": "offline", "name": "Desde el espacio exterior", "desc": "Recoge las 50 piezas de la nave espacial y completa la cadena asociada.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 19, "cat": "offline", "name": "Un misterio resuelto", "desc": "Recoge los 50 fragmentos de carta y resuelve el misterio.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 20, "cat": "offline", "name": "Gestión de residuos", "desc": "Compra el viejo muelle y recoge los 30 residuos nucleares.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 21, "cat": "missable", "name": "Niebla roja", "desc": "Completa todas las masacres de Trevor.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 22, "cat": "offline", "name": "Presume", "desc": "Completa los 50 saltos acrobáticos.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 23, "cat": "missable", "name": "Kifflom!", "desc": "Completa tu camino hacia la iluminación… o no.", "grade": "Plata", "pack": "base", "done": false, "story": false}, {"id": 24, "cat": "missable", "name": "Ejército de tres hombres", "desc": "Sobrevive 3 minutos con ≥3 estrellas y los tres protagonistas juntos fuera de misión.", "grade": "Bronce", "pack": "base", "done": true, "story": false}, {"id": 25, "cat": "offline", "name": "Fuera de tu alcance", "desc": "Necesitarás un barco más grande…", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 26, "cat": "missable", "name": "Acólito altruista", "desc": "Entrega una víctima desprevenida al Culto Altruista con Trevor.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 27, "cat": "offline", "name": "Un montón de pasta", "desc": "Gasta un total de 200 millones de dólares entre los tres personajes.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 28, "cat": "offline", "name": "Macho alfa en la bolsa", "desc": "Consigue beneficios que cubran el total de tus inversiones en bolsa.", "grade": "Bronce", "pack": "base", "done": true, "story": false}, {"id": 29, "cat": "offline", "name": "Tuneá mi arma", "desc": "Modifica completamente un arma.", "grade": "Bronce", "pack": "base", "done": true, "story": false}, {"id": 30, "cat": "missable", "name": "Se busca con o con vida", "desc": "Entrega con vida un objetivo de cazarrecompensas.", "grade": "Bronce", "pack": "base", "done": true, "story": false}, {"id": 31, "cat": "offline", "name": "Los Santos Customs", "desc": "Modifica completamente un vehículo.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 32, "cat": "offline", "name": "Por un pelo", "desc": "Completa todos los desafíos Bajo el puente y Vuelo a cuchillo.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 33, "cat": "offline", "name": "Una nueva perspectiva", "desc": "Juega GTA V en primera persona durante 15 horas.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 34, "cat": "online", "name": "Recién bajado del avión", "desc": "GTA Online: completa la introducción.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 35, "cat": "online", "name": "Gánster de tres al cuarto", "desc": "GTA Online: alcanza el rango 25.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 36, "cat": "online", "name": "Moviendo ficha", "desc": "GTA Online: alcanza el rango 50.", "grade": "Plata", "pack": "base", "done": false, "story": false}, {"id": 37, "cat": "online", "name": "Por encima de la ley", "desc": "GTA Online: alcanza el rango 100.", "grade": "Oro", "pack": "base", "done": false, "story": false}, {"id": 38, "cat": "online", "name": "Número uno", "desc": "GTA Online: consigue el primer puesto en todos los tipos de partida competitiva requeridos.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 39, "cat": "online", "name": "The Midnight Club", "desc": "GTA Online: usa vehículos personalizados para ganar 5 carreras.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 40, "cat": "online", "name": "Selección antinatural", "desc": "GTA Online: completa las 10 oleadas de una supervivencia.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 41, "cat": "online", "name": "Desde el asiento de atrás", "desc": "GTA Online: dirige a un piloto hasta el primer puesto como copiloto en modo Rally.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 42, "cat": "online", "name": "Corre como el viento", "desc": "GTA Online: sobrevive un día con una recompensa por tu cabeza.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 43, "cat": "online", "name": "Barrido limpio", "desc": "GTA Online: termina un ataque a banda sin morir y mata al menos a 10 enemigos.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 44, "cat": "online", "name": "Condecorado", "desc": "GTA Online: consigue 30 premios de platino.", "grade": "Plata", "pack": "base", "done": false, "story": false}, {"id": 45, "cat": "online", "name": "Atracador", "desc": "GTA Online: atraca las 20 tiendas.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 46, "cat": "online", "name": "Disfruta de la estancia", "desc": "GTA Online: participa en todo lo que Los Santos ofrece según el requisito del trofeo.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 47, "cat": "online", "name": "Parte de la banda", "desc": "GTA Online: completa una actividad como miembro de una Crew.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 48, "cat": "online", "name": "Reembolso completo", "desc": "GTA Online: mata al ladrón que te haya atracado.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 49, "cat": "online", "name": "Llamada de socorro", "desc": "GTA Online: solicita apoyo de una banda por teléfono por primera vez.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 50, "cat": "online", "name": "El sueño americano", "desc": "GTA Online: posee apartamento, garaje y vehículo asegurado.", "grade": "Bronce", "pack": "base", "done": false, "story": false}, {"id": 51, "cat": "heists", "name": "Be Prepared", "desc": "GTA Online: completa una misión preparatoria de golpe.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 52, "cat": "heists", "name": "In the Name of Science", "desc": "Completa Humane Labs Raid y Series A Funding como líder o miembro.", "grade": "Plata", "pack": "heists", "done": false, "story": false}, {"id": 53, "cat": "heists", "name": "Dead Presidents", "desc": "Completa The Fleeca Job y The Pacific Standard Job como líder o miembro.", "grade": "Plata", "pack": "heists", "done": false, "story": false}, {"id": 54, "cat": "heists", "name": "Parole Day", "desc": "Completa The Prison Break como líder o miembro.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 55, "cat": "heists", "name": "Shot Caller", "desc": "Invierte tu dinero para preparar un golpe.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 56, "cat": "heists", "name": "Four Way", "desc": "Como líder, reparte el 25 % del final entre los cuatro jugadores.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 57, "cat": "heists", "name": "Live a Little", "desc": "Gasta 8.000.000 $ en vehículos de la actualización Heists.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 58, "cat": "heists", "name": "Can't Touch This", "desc": "Completa el final de un golpe sin recibir daño.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 59, "cat": "heists", "name": "Mastermind", "desc": "Consigue 25 medallas de platino en preparativos y finales de golpes.", "grade": "Bronce", "pack": "heists", "done": false, "story": false}, {"id": 60, "cat": "editor", "name": "Vinewood Visionary", "desc": "Crea y exporta un vídeo con Rockstar Editor o entra 5 veces en Modo Director.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 61, "cat": "editor", "name": "Majestic", "desc": "Crea y exporta 10 vídeos con Rockstar Editor.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 62, "cat": "editor", "name": "Humans of Los Santos", "desc": "Desbloquea todos los personajes especiales y entra en Modo Director con uno.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 63, "cat": "editor", "name": "First Time Director", "desc": "Entra por primera vez en Modo Director como actor desbloqueado.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 64, "cat": "editor", "name": "Animal Lover", "desc": "Entra en Modo Director como un animal desbloqueado.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 65, "cat": "editor", "name": "Ensemble Piece", "desc": "Desbloquea todos los personajes de Historia y entra como uno en Modo Director.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 66, "cat": "editor", "name": "Cult Movie", "desc": "Entra en Modo Director como Cris Formage.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 67, "cat": "editor", "name": "Location Scout", "desc": "Visita todas las localizaciones en Modo Director.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 68, "cat": "editor", "name": "Method Actor", "desc": "Entra en Modo Director usando uno de tus personajes de GTA Online.", "grade": "Bronce", "pack": "editor", "done": false, "story": false}, {"id": 69, "cat": "editor", "name": "Cryptozoologist", "desc": "Desbloquea todos los animales requeridos para Modo Director.", "grade": "Plata", "pack": "editor", "done": false, "story": false}, {"id": 70, "cat": "doomsday", "name": "Getting Started", "desc": "GTA Online: prepara The Doomsday Heist.", "grade": "Bronce", "pack": "doomsday", "done": false, "story": false}, {"id": 71, "cat": "doomsday", "name": "The Data Breaches", "desc": "Completa el Acto I como líder o miembro.", "grade": "Bronce", "pack": "doomsday", "done": false, "story": false}, {"id": 72, "cat": "doomsday", "name": "The Bogdan Problem", "desc": "Completa el Acto II como líder o miembro.", "grade": "Bronce", "pack": "doomsday", "done": false, "story": false}, {"id": 73, "cat": "doomsday", "name": "The Doomsday Scenario", "desc": "Completa el Acto III como líder o miembro.", "grade": "Bronce", "pack": "doomsday", "done": false, "story": false}, {"id": 74, "cat": "doomsday", "name": "A World Worth Saving", "desc": "Completa The Doomsday Heist como líder o miembro.", "grade": "Plata", "pack": "doomsday", "done": false, "story": false}, {"id": 75, "cat": "doomsday", "name": "Orbital Obliteration", "desc": "Mata a otro jugador con el cañón orbital.", "grade": "Bronce", "pack": "doomsday", "done": false, "story": false}, {"id": 76, "cat": "doomsday", "name": "Elitist", "desc": "Completa los 3 desafíos de élite de The Doomsday Heist.", "grade": "Plata", "pack": "doomsday", "done": false, "story": false}, {"id": 77, "cat": "doomsday", "name": "Masterminds", "desc": "Completa los 3 desafíos Criminal Mastermind de The Doomsday Heist.", "grade": "Plata", "pack": "doomsday", "done": false, "story": false}];
-const KEY="gtav_ps5_trophies_v2"; let state=JSON.parse(localStorage.getItem(KEY)||"null")||{};
-DATA.forEach(t=>{if(state[t.id]===undefined) state[t.id]=t.done;}); save();
-let filter="all";
-const groups=[
-["story","Historia"],["missable","⚠️ Perdibles / prioridad"],["offline","Modo historia · otros"],["online","GTA Online · juego base"],
-["heists","DLC · Heists"],["editor","DLC · Rockstar Editor"],["doomsday","DLC · Doomsday Heist"],["base","Platino"]
-];
-function save(){localStorage.setItem(KEY,JSON.stringify(state));}
-function isDLC(t){return ["heists","editor","doomsday"].includes(t.cat)}
-function visible(t){
- let q=search.value.trim().toLowerCase(); if(q && !(t.name+" "+t.desc).toLowerCase().includes(q))return false;
- if(filter==="pending"&&state[t.id])return false;
- if(filter==="missable"&&t.cat!=="missable")return false;
- if(filter==="offline"&&!["story","offline","missable","base"].includes(t.cat))return false;
- if(filter==="online"&&t.cat!=="online")return false;
- if(filter==="dlc"&&!isDLC(t))return false;
- return true;
-}
-function render(){
- list.innerHTML="";
- groups.forEach(([code,title])=>{
-   let a=DATA.filter(t=>t.cat===code&&visible(t)); if(!a.length)return;
-   let done=a.filter(t=>state[t.id]).length;
-   let h=document.createElement("div"); h.className="section"; h.innerHTML=`<h2>${title}</h2><span>${done}/${a.length}</span>`; list.appendChild(h);
-   a.forEach(t=>{
-    let d=document.createElement("label"); d.className="item"+(state[t.id]?" done":"");
-    let tags=`<span class="badge ${t.grade==="Oro"?"gold":""}">${t.grade}</span>`;
-    if(t.cat==="missable")tags+=`<span class="badge miss">PERDIBLE</span>`;
-    if(t.story)tags+=`<span class="badge story">HISTORIA</span>`;
-    d.innerHTML=`<input class="check" type="checkbox" ${state[t.id]?"checked":""}><div class="body"><div class="nm">${t.name}</div><div class="ds">${t.desc}</div><div class="badges">${tags}</div></div>`;
-    d.querySelector("input").onchange=e=>{state[t.id]=e.target.checked;save();render();};
-    list.appendChild(d);
-   });
- });
- if(!list.children.length) list.innerHTML='<div class="empty">No hay trofeos que coincidan.</div>';
- update();
-}
+const HUNTS=[{"id": "jumps", "name": "Saltos acrobáticos", "icon": "🏍️", "total": 50, "trophy": "Presume", "note": "Completa los 50 saltos acrobáticos."}, {"id": "spaceship", "name": "Piezas de nave", "icon": "🛸", "total": 50, "trophy": "Desde el espacio exterior", "note": "50 piezas. Tras reunirlas, completa el cierre de la cadena de Omega."}, {"id": "letters", "name": "Fragmentos de carta", "icon": "✉️", "total": 50, "trophy": "Un misterio resuelto", "note": "50 fragmentos. Después completa la misión final asociada."}, {"id": "bridges", "name": "Bajo el puente", "icon": "🚁", "total": 50, "trophy": "Por un pelo", "note": "El trofeo Por un pelo exige completar todos los vuelos bajo puentes."}, {"id": "knife", "name": "Vuelos a cuchillo", "icon": "✈️", "total": 15, "trophy": "Por un pelo", "note": "Completa los 15 vuelos a cuchillo."}, {"id": "waste", "name": "Residuos nucleares", "icon": "☢️", "total": 30, "trophy": "Gestión de residuos", "note": "30 barriles submarinos tras comprar Sonar Collections Dock."}, {"id": "epsilon", "name": "Tratados Epsilon", "icon": "🔷", "total": 10, "trophy": "Kifflom!", "note": "Tracker auxiliar para la cadena Epsilon."}];
+const TKEY="gtav_ps5_trophies_v2", HKEY="gtav_hunts_v3";
+let state=JSON.parse(localStorage.getItem(TKEY)||"null")||{}; DATA.forEach(t=>{if(state[t.id]===undefined)state[t.id]=!!t.done});
+let hs=JSON.parse(localStorage.getItem(HKEY)||"null")||{}; HUNTS.forEach(h=>{if(!Array.isArray(hs[h.id]))hs[h.id]=Array(h.total).fill(false)});
+let filter="platinum";
+function save(){localStorage.setItem(TKEY,JSON.stringify(state));localStorage.setItem(HKEY,JSON.stringify(hs));}
+function isBase(t){return t.pack==="base"} function isDlc(t){return t.pack!=="base"}
 function update(){
- let n=DATA.filter(t=>state[t.id]).length, p=Math.round(n/DATA.length*100);
- stat.textContent=`${n} / ${DATA.length} trofeos`; pct.textContent=p+"%"; bar.style.width=p+"%";
+ let all=DATA.filter(t=>state[t.id]).length, base=DATA.filter(t=>isBase(t)), bd=base.filter(t=>state[t.id]).length;
+ let doneH=0,totalH=0;HUNTS.forEach(h=>{doneH+=hs[h.id].filter(Boolean).length;totalH+=h.total});
+ let hp=Math.round(doneH/totalH*100), miss=DATA.filter(t=>t.cat==="missable"&&!state[t.id]).length;
+ headline.textContent=`${bd}/${base.length} base · ${all}/${DATA.length} total`;pct.textContent=Math.round(bd/base.length*100)+"%";bar.style.width=(bd/base.length*100)+"%";
+ platstat.textContent=`${bd}/${base.length}`;allstat.textContent=`${all}/${DATA.length}`;huntstat.textContent=hp+"%";missstat.textContent=miss;
 }
-nav.onclick=e=>{if(!e.target.dataset.f)return;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));e.target.classList.add("on");filter=e.target.dataset.f;render();};
-search.oninput=render;
-function exportData(){backup.value=btoa(unescape(encodeURIComponent(JSON.stringify(state))));backup.select();navigator.clipboard?.writeText(backup.value);}
-function importData(){try{state=JSON.parse(decodeURIComponent(escape(atob(backup.value.trim()))));save();render();alert("Progreso importado.");}catch(e){alert("La copia no es válida.");}}
-function resetData(){if(confirm("¿Seguro que quieres desmarcar todos los trofeos?")){state={};DATA.forEach(t=>state[t.id]=false);save();render();}}
-render();
-
-if ('serviceWorker' in navigator) { window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js')); }
+function trophyVisible(t){
+ let q=search.value.trim().toLowerCase();if(q&&!(t.name+" "+t.desc).toLowerCase().includes(q))return false;
+ if(filter==="platinum"&&!isBase(t))return false;if(filter==="pending"&&state[t.id])return false;if(filter==="missable"&&t.cat!=="missable")return false;
+ if(filter==="offline"&&!["story","offline","missable","base"].includes(t.cat))return false;if(filter==="online"&&t.cat!=="online")return false;if(filter==="dlc"&&!isDlc(t))return false;return true;
+}
+function renderTrophies(){
+ trophylist.innerHTML="";DATA.filter(trophyVisible).forEach(t=>{let d=document.createElement("label");d.className="item"+(state[t.id]?" done":"");d.innerHTML=`<input class="check" type="checkbox" ${state[t.id]?"checked":""}><div><div class="nm">${t.name}</div><div class="ds">${t.desc}</div><span class="tag">${t.grade}</span>${t.cat==="missable"?'<span class="tag danger">PERDIBLE</span>':""}</div>`;d.querySelector("input").onchange=e=>{state[t.id]=e.target.checked;save();renderTrophies();update()};trophylist.appendChild(d)});update();
+}
+function huntCard(h,compact=false){
+ let n=hs[h.id].filter(Boolean).length,p=Math.round(n/h.total*100),d=document.createElement("div");d.className="hunt";
+ d.innerHTML=`<div class="hunthead"><div><h3>${h.icon} ${h.name}</h3><div class="mut">${h.trophy}</div></div><div class="count">${n}/${h.total}</div></div><div class="mini"><i style="width:${p}%"></i></div>${compact?"":`<div class="ds">${h.note}</div><div class="numbers">${Array.from({length:h.total},(_,i)=>`<button class="num ${hs[h.id][i]?"done":""}" data-i="${i}">${i+1}</button>`).join("")}</div><div class="actions"><button class="btn" data-all="1">Marcar todo</button><button class="btn" data-clear="1">Limpiar</button><button class="btn primary" onclick="goMap()">Ver mapa</button></div>`}`;
+ if(!compact){d.querySelectorAll(".num").forEach(b=>b.onclick=()=>{hs[h.id][+b.dataset.i]=!hs[h.id][+b.dataset.i];save();renderHunts();update()});d.querySelector("[data-all]").onclick=()=>{hs[h.id]=Array(h.total).fill(true);save();renderHunts();update()};d.querySelector("[data-clear]").onclick=()=>{hs[h.id]=Array(h.total).fill(false);save();renderHunts();update()}}
+ return d;
+}
+function renderHunts(){huntlist.innerHTML="";HUNTS.forEach(h=>huntlist.appendChild(huntCard(h)));homehunts.innerHTML="";HUNTS.slice(0,4).forEach(h=>homehunts.appendChild(huntCard(h,true)));update()}
+function goMap(){document.querySelector('[data-page="map"]').click()}
+document.querySelector(".bottom").onclick=e=>{let b=e.target.closest(".nav");if(!b)return;document.querySelectorAll(".nav").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(b.dataset.page).classList.add("on");scrollTo(0,0)};
+filters.onclick=e=>{if(!e.target.dataset.f)return;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));e.target.classList.add("on");filter=e.target.dataset.f;renderTrophies()};search.oninput=renderTrophies;
+function exportData(){backup.value=btoa(unescape(encodeURIComponent(JSON.stringify({t:state,h:hs}))));backup.select();navigator.clipboard?.writeText(backup.value)}
+function importData(){try{let x=JSON.parse(decodeURIComponent(escape(atob(backup.value.trim()))));state=x.t||state;hs=x.h||hs;save();renderTrophies();renderHunts();alert("Progreso importado")}catch(e){alert("Copia no válida")}}
+save();renderTrophies();renderHunts();
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"));
 </script></body></html>
