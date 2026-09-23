@@ -52,7 +52,7 @@ textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid v
 
 <section class="page" id="data"><div class="hero"><h1>💾 Datos</h1><div class="mut">Copia de seguridad del progreso de trofeos y búsquedas.</div></div>
 <div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Guarda esta cadena en Notas si quieres poder restaurar el progreso.</div></div>
-<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.3</div></div>
+<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.4</div></div>
 </section>
 </main>
 <nav class="bottom"><button class="nav on" data-page="home"><b>⌂</b>Inicio</button><button class="nav" data-page="trophies"><b>🏆</b>Trofeos</button><button class="nav" data-page="hunts"><b>✓</b>Objetivos</button><button class="nav" data-page="map"><b>🗺️</b>Mapa</button><button class="nav" data-page="data"><b>⚙️</b>Datos</button></nav>
@@ -100,7 +100,7 @@ function renderTrophies(){
 function huntCard(h,compact=false){
  let n=hs[h.id].filter(Boolean).length,p=Math.round(n/h.total*100),d=document.createElement("div");d.className="hunt";
  d.innerHTML=`<div class="hunthead"><div><h3>${h.icon} ${h.name}</h3><div class="mut">${h.trophy}</div></div><div class="count">${n}/${h.total}</div></div><div class="mini"><i style="width:${p}%"></i></div>${compact?"":`<div class="ds">${h.note}</div><div class="numbers">${Array.from({length:h.total},(_,i)=>`<button class="num ${hs[h.id][i]?"done":""}" data-i="${i}">${i+1}</button>`).join("")}</div><div class="actions"><button class="btn" data-all="1">Marcar todo</button><button class="btn" data-clear="1">Limpiar</button><button class="btn primary" onclick="goMap()">Ver mapa</button></div>`}`;
- if(!compact){d.querySelectorAll(".num").forEach(b=>b.onclick=()=>{hs[h.id][+b.dataset.i]=!hs[h.id][+b.dataset.i];save();renderHunts();update()});d.querySelector("[data-all]").onclick=()=>{hs[h.id]=Array(h.total).fill(true);save();renderHunts();update()};d.querySelector("[data-clear]").onclick=()=>{hs[h.id]=Array(h.total).fill(false);save();renderHunts();update()}}
+ if(!compact){d.querySelectorAll(".num").forEach(b=>b.onclick=()=>{hs[h.id][+b.dataset.i]=!hs[h.id][+b.dataset.i];save();renderHunts();update()});d.querySelector("[data-all]").onclick=()=>{hs[h.id]=Array(h.total).fill(true);save();renderHunts();update()};d.querySelector("[data-clear]").onclick=()=>{if(!confirm(`¿Seguro que quieres limpiar todo el progreso de ${h.name}?`))return;hs[h.id]=Array(h.total).fill(false);save();renderHunts();update()}}
  return d;
 }
 function renderHunts(){huntlist.innerHTML="";HUNTS.forEach(h=>huntlist.appendChild(huntCard(h)));homehunts.innerHTML="";HUNTS.slice(0,4).forEach(h=>homehunts.appendChild(huntCard(h,true)));update()}
@@ -113,7 +113,7 @@ save();renderTrophies();renderHunts();
 let swReg=null, reloading=false;
 async function checkForUpdate(){
  const s=document.getElementById("updateStatus"),b=document.getElementById("updateBtn"); if(b)b.disabled=true;if(s)s.textContent="Buscando actualización…";
- try{if(!("serviceWorker" in navigator))throw new Error("No compatible");swReg=swReg||await navigator.serviceWorker.getRegistration()||await navigator.serviceWorker.register("./service-worker.js");await swReg.update();setTimeout(()=>{if(s)s.textContent="La aplicación está actualizada · v3.3";if(b)b.disabled=false},1200)}
+ try{if(!("serviceWorker" in navigator))throw new Error("No compatible");swReg=swReg||await navigator.serviceWorker.getRegistration()||await navigator.serviceWorker.register("./service-worker.js");await swReg.update();setTimeout(()=>{if(s)s.textContent="La aplicación está actualizada · v3.4";if(b)b.disabled=false},1200)}
  catch(e){if(s)s.textContent="No se pudo comprobar. Revisa la conexión.";if(b)b.disabled=false}
 }
 if("serviceWorker" in navigator){
