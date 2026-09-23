@@ -27,8 +27,7 @@ textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid v
 <section class="page on" id="home">
 <div class="hero"><h1>🏆 Tu partida</h1><div class="mut">Tracker local para PS5. Trofeos, coleccionables y objetivos de exploración en un solo sitio.</div></div>
 <div class="grid"><div class="stat"><strong id="platstat">0/51</strong><span>Camino al platino</span></div><div class="stat"><strong id="allstat">0/78</strong><span>Total con DLC</span></div><div class="stat"><strong id="huntstat">0%</strong><span>Coleccionables</span></div><div class="stat"><strong id="missstat">0</strong><span>Perdibles pendientes</span></div></div>
-<h2>Qué hacer ahora</h2><div class="card priority"><h3>⚠️ <b>Acólito altruista</b></h3><div class="mut">Es tu prioridad actual: entrega con Trevor una víctima válida al Culto Altruista antes de agotar los eventos adecuados.</div></div>
-<div class="card"><h3>🧭 Después</h3><div class="mut">Puedes ir limpiando saltos, piezas de nave y fragmentos de carta por zonas. En la pestaña <b>Objetivos</b> tienes contadores individuales y en <b>Mapa</b> un mapa interactivo externo.</div></div>
+<h2>Qué hacer ahora</h2><div id="nextActions"></div>
 <h2>Progreso de búsquedas</h2><div id="homehunts"></div>
 </section>
 
@@ -60,6 +59,23 @@ let hs=JSON.parse(localStorage.getItem(HKEY)||"null")||{}; HUNTS.forEach(h=>{if(
 let filter="platinum";
 function save(){localStorage.setItem(TKEY,JSON.stringify(state));localStorage.setItem(HKEY,JSON.stringify(hs));}
 function isBase(t){return t.pack==="base"} function isDlc(t){return t.pack!=="base"}
+function renderNextActions(){
+ const priorities=[
+  ["Acólito altruista","⚠️","Entrega con Trevor una víctima válida al Culto Altruista antes de agotar los eventos adecuados."],
+  ["Carrera armamentística de TP Industries","⚠️","Compra McKenzie Field Hangar con Trevor y completa las misiones de tráfico de armas."],
+  ["Niebla roja","⚠️","Completa todas las masacres de Trevor."],
+  ["Kifflom!","🔷","Avanza la cadena del Programa Epsilon con Michael."],
+  ["Presume","🏍️","Ve completando los 50 saltos acrobáticos; puedes registrarlos en Objetivos y localizarlos desde Mapa."],
+  ["Desde el espacio exterior","🛸","Busca las 50 piezas de la nave espacial y registra cada una en Objetivos."],
+  ["Un misterio resuelto","✉️","Busca los 50 fragmentos de carta y registra cada uno en Objetivos."],
+  ["Por un pelo","✈️","Completa los desafíos Bajo el puente y Vuelo a cuchillo."],
+  ["Gestión de residuos","☢️","Recoge los 30 residuos nucleares cuando tengas disponible el muelle correspondiente."]
+ ];
+ const next=priorities.find(p=>{const t=DATA.find(x=>x.name===p[0]);return t&&!state[t.id]});
+ if(!next){nextActions.innerHTML=`<div class="card"><h3>✅ Prioridades completadas</h3><div class="mut">No queda ningún objetivo prioritario de esta ruta. Revisa Trofeos → Pendientes para continuar.</div></div>`;return}
+ const t=DATA.find(x=>x.name===next[0]); const miss=t&&t.cat==="missable";
+ nextActions.innerHTML=`<div class="card ${miss?"priority":""}"><h3>${next[1]} <b>${next[0]}</b></h3><div class="mut">${next[2]}</div></div><div class="card"><h3>🧭 Después</h3><div class="mut">La recomendación cambia automáticamente cuando marques este trofeo como completado. Puedes avanzar también coleccionables desde <b>Objetivos</b> y <b>Mapa</b>.</div></div>`;
+}
 function update(){
  let all=DATA.filter(t=>state[t.id]).length, base=DATA.filter(t=>isBase(t)), bd=base.filter(t=>state[t.id]).length;
  let doneH=0,totalH=0;HUNTS.forEach(h=>{doneH+=hs[h.id].filter(Boolean).length;totalH+=h.total});
