@@ -21,6 +21,13 @@ main{max-width:780px;margin:auto;padding:14px 14px calc(92px + env(safe-area-ins
 .mapframe{width:100%;height:58vh;border:1px solid var(--line);border-radius:17px;background:#111}
 .stuntmap{width:100%;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#111}
 .stuntmap img{display:block;width:100%;height:auto}
+.mapviewer{position:relative;border:1px solid var(--line);border-radius:18px;background:#0b100d;overflow:hidden;margin-top:12px}
+.mapviewer.full{position:fixed;inset:0;z-index:100;border:0;border-radius:0;background:#080c09;padding:calc(env(safe-area-inset-top) + 8px) 8px calc(env(safe-area-inset-bottom) + 8px);display:flex;flex-direction:column}
+.zoomtools{display:flex;align-items:center;gap:6px;padding:8px;background:#111713eF;position:sticky;top:0;z-index:4;border-bottom:1px solid var(--line)}
+.zoomtools .btn{padding:9px 11px;min-width:42px}.zoomlevel{color:var(--g);font-weight:900;font-size:12px;min-width:34px;text-align:center}.zoomspacer{flex:1}
+.mapviewport{width:100%;max-height:70vh;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;background:#0a0f0b;-webkit-overflow-scrolling:touch}
+.mapviewer.full .mapviewport{max-height:none;flex:1}
+.mapviewport img{display:block;width:100%;max-width:none;height:auto;transform-origin:top left}
 .updateStatus{margin-top:10px;font-size:12px;color:var(--mut)}
 .maplinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.maplinks a{text-align:center}
 .bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#0b100ded;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}.nav{border:0;background:none;color:#89938b;font-size:10px;font-weight:700;min-width:66px;padding:5px}.nav b{display:block;font-size:21px;margin-bottom:2px}.nav.on{color:var(--g)}
@@ -46,13 +53,20 @@ textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid v
 <div class="stuntmap" id="stuntMap"><img id="stuntMapImg" src="https://www.powerpyx.com/Assets/Maps/GTA-V/grand-theft-auto-v-monster-stunt-jump-locations-map.jpg" alt="Mapa de los 50 saltos acrobáticos de GTA V"></div>
 <div class="actions"><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div>
 <div class="note">Fuente del mapa: PowerPyx.</div></div>
+<div class="hunt"><div class="hunthead"><div><h3>🛸 Piezas de la nave</h3><div class="mut">Mapa de las 50 piezas · zoom hasta 8×</div></div></div>
+<div class="mapviewer" id="spaceshipViewer">
+<div class="zoomtools"><button class="btn" onclick="changeMapZoom('spaceship',-.5)" aria-label="Alejar mapa">−</button><span class="zoomlevel" id="spaceshipZoomLevel">1×</span><button class="btn" onclick="changeMapZoom('spaceship',.5)" aria-label="Acercar mapa">＋</button><button class="btn" onclick="setMapZoom('spaceship',8)">Máximo</button><div class="zoomspacer"></div><button class="btn primary" id="spaceshipFullBtn" onclick="toggleMapFullscreen('spaceship')">⛶ Pantalla completa</button></div>
+<div class="mapviewport" id="spaceshipViewport"><img id="spaceshipMapImg" src="./images/spaceship-parts-map.jpeg" alt="Mapa de las 50 piezas de la nave espacial de GTA V"></div>
+</div>
+<div class="actions"><button class="btn" onclick="setMapZoom('spaceship',1)">Restablecer zoom</button><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div>
+<div class="note">Usa ＋ y −, pulsa «Máximo» o abre el visor a pantalla completa. Arrastra el mapa con un dedo para desplazarte.</div></div>
 <h2>Otros objetivos</h2>
 <div class="maplinks"><a class="btn primary" target="_blank" href="https://progressbar.gg/gta5/map/">Mapa interactivo general</a><a class="btn" target="_blank" href="https://gta-5-map.com/">Mapa alternativo</a></div>
 </section>
 
 <section class="page" id="data"><div class="hero"><h1>💾 Datos</h1><div class="mut">Copia de seguridad del progreso de trofeos y búsquedas.</div></div>
 <div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Guarda esta cadena en Notas si quieres poder restaurar el progreso.</div></div>
-<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.4</div></div>
+<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.5</div></div>
 </section>
 </main>
 <nav class="bottom"><button class="nav on" data-page="home"><b>⌂</b>Inicio</button><button class="nav" data-page="trophies"><b>🏆</b>Trofeos</button><button class="nav" data-page="hunts"><b>✓</b>Objetivos</button><button class="nav" data-page="map"><b>🗺️</b>Mapa</button><button class="nav" data-page="data"><b>⚙️</b>Datos</button></nav>
@@ -105,6 +119,15 @@ function huntCard(h,compact=false){
 }
 function renderHunts(){huntlist.innerHTML="";HUNTS.forEach(h=>huntlist.appendChild(huntCard(h)));homehunts.innerHTML="";HUNTS.slice(0,4).forEach(h=>homehunts.appendChild(huntCard(h,true)));update()}
 function goMap(){document.querySelector('[data-page="map"]').click()}
+const mapZoom={spaceship:1};
+function setMapZoom(id,value){
+ const viewport=document.getElementById(id+"Viewport"),img=document.getElementById(id+"MapImg"),level=document.getElementById(id+"ZoomLevel");if(!viewport||!img)return;
+ const old=mapZoom[id]||1,cx=(viewport.scrollLeft+viewport.clientWidth/2)/Math.max(viewport.scrollWidth,1),cy=(viewport.scrollTop+viewport.clientHeight/2)/Math.max(viewport.scrollHeight,1);
+ const next=Math.max(1,Math.min(8,Math.round(value*2)/2));mapZoom[id]=next;img.style.width=(next*100)+"%";if(level)level.textContent=next+"×";
+ requestAnimationFrame(()=>{viewport.scrollLeft=Math.max(0,cx*viewport.scrollWidth-viewport.clientWidth/2);viewport.scrollTop=Math.max(0,cy*viewport.scrollHeight-viewport.clientHeight/2)});
+}
+function changeMapZoom(id,amount){setMapZoom(id,(mapZoom[id]||1)+amount)}
+function toggleMapFullscreen(id){const viewer=document.getElementById(id+"Viewer"),btn=document.getElementById(id+"FullBtn");if(!viewer)return;viewer.classList.toggle("full");const full=viewer.classList.contains("full");if(btn)btn.textContent=full?"✕ Cerrar":"⛶ Pantalla completa";document.body.style.overflow=full?"hidden":""}
 document.querySelector(".bottom").onclick=e=>{let b=e.target.closest(".nav");if(!b)return;document.querySelectorAll(".nav").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(b.dataset.page).classList.add("on");scrollTo(0,0)};
 filters.onclick=e=>{if(!e.target.dataset.f)return;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));e.target.classList.add("on");filter=e.target.dataset.f;renderTrophies()};search.oninput=renderTrophies;
 function exportData(){backup.value=btoa(unescape(encodeURIComponent(JSON.stringify({t:state,h:hs}))));backup.select();navigator.clipboard?.writeText(backup.value)}
@@ -113,7 +136,7 @@ save();renderTrophies();renderHunts();
 let swReg=null, reloading=false;
 async function checkForUpdate(){
  const s=document.getElementById("updateStatus"),b=document.getElementById("updateBtn"); if(b)b.disabled=true;if(s)s.textContent="Buscando actualización…";
- try{if(!("serviceWorker" in navigator))throw new Error("No compatible");swReg=swReg||await navigator.serviceWorker.getRegistration()||await navigator.serviceWorker.register("./service-worker.js");await swReg.update();setTimeout(()=>{if(s)s.textContent="La aplicación está actualizada · v3.4";if(b)b.disabled=false},1200)}
+ try{if(!("serviceWorker" in navigator))throw new Error("No compatible");swReg=swReg||await navigator.serviceWorker.getRegistration()||await navigator.serviceWorker.register("./service-worker.js");await swReg.update();setTimeout(()=>{if(s)s.textContent="La aplicación está actualizada · v3.5";if(b)b.disabled=false},1200)}
  catch(e){if(s)s.textContent="No se pudo comprobar. Revisa la conexión.";if(b)b.disabled=false}
 }
 if("serviceWorker" in navigator){
