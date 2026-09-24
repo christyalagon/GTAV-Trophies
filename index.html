@@ -16,18 +16,14 @@ main{max-width:780px;margin:auto;padding:14px 14px calc(92px + env(safe-area-ins
 .item{display:flex;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px;margin:7px 0}.item.done{opacity:.48}.item.done .nm{text-decoration:line-through}.check{appearance:none;width:24px;height:24px;border:2px solid #606b62;border-radius:7px;flex:none}.check:checked{background:var(--g);border-color:var(--g)}.check:checked:after{content:"✓";display:grid;place-items:center;color:#10140e;font-weight:900}
 .nm{font-weight:780;font-size:14px}.ds{color:var(--mut);font-size:12px;margin-top:3px;line-height:1.35}.tag{display:inline-block;font-size:9px;font-weight:850;padding:3px 6px;border-radius:6px;background:#283128;color:#c7cec8;margin-top:6px}.danger{background:#4b211f;color:#ffaaa5}
 .search{width:100%;padding:13px;background:#111713;border:1px solid var(--line);color:#fff;border-radius:14px;font-size:16px;margin-bottom:10px}.filters{display:flex;gap:6px;overflow:auto;margin-bottom:12px}.chip{white-space:nowrap;border:1px solid var(--line);background:#121814;color:#ccd2cd;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:700}.chip.on{background:var(--g);color:#111;border-color:var(--g)}
-.hunt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin:9px 0}.hunthead{display:flex;justify-content:space-between;align-items:center}.count{font-weight:900;color:var(--g)}.mini{height:5px;background:#283029;border-radius:5px;overflow:hidden;margin:10px 0}.mini i{display:block;height:100%;background:var(--g)}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}.num{border:1px solid #354039;background:#171e19;color:#dce1dd;border-radius:9px;padding:9px 2px;font-size:12px;font-weight:750}.num.done{background:var(--g);border-color:var(--g);color:#111}
+.hunt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin:9px 0}.hunthead{display:flex;justify-content:space-between;align-items:center}.hunttoggle{width:100%;border:0;background:none;color:inherit;padding:0;display:flex;justify-content:space-between;align-items:center;text-align:left}.hunttoggle .right{display:flex;align-items:center;gap:10px}.fold{font-size:20px;color:var(--mut);transition:transform .18s}.hunttoggle[aria-expanded="true"] .fold{transform:rotate(180deg);color:var(--g)}.huntbody{padding-top:2px}.count{font-weight:900;color:var(--g)}.mini{height:5px;background:#283029;border-radius:5px;overflow:hidden;margin:10px 0}.mini i{display:block;height:100%;background:var(--g)}.numbers{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}.num{border:1px solid #354039;background:#171e19;color:#dce1dd;border-radius:9px;padding:9px 2px;font-size:12px;font-weight:750}.num.done{background:var(--g);border-color:var(--g);color:#111}
 .actions{display:flex;gap:7px;margin-top:10px}.btn{border:1px solid var(--line);background:#1a221c;color:#fff;border-radius:11px;padding:10px 11px;font-weight:700;font-size:12px;text-decoration:none;display:inline-block}.btn.primary{background:var(--g);color:#10140e;border-color:var(--g)}
 .mapframe{width:100%;height:58vh;border:1px solid var(--line);border-radius:17px;background:#111}
 .stuntmap{width:100%;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#111}
 .stuntmap img{display:block;width:100%;height:auto}
-.mapviewer{position:relative;border:1px solid var(--line);border-radius:18px;background:#0b100d;overflow:hidden;margin-top:12px}
-.mapviewer.full{position:fixed;inset:0;z-index:100;border:0;border-radius:0;background:#080c09;padding:calc(env(safe-area-inset-top) + 8px) 8px calc(env(safe-area-inset-bottom) + 8px);display:flex;flex-direction:column}
-.zoomtools{display:flex;align-items:center;gap:6px;padding:8px;background:#111713eF;position:sticky;top:0;z-index:4;border-bottom:1px solid var(--line)}
-.zoomtools .btn{padding:9px 11px;min-width:42px}.zoomlevel{color:var(--g);font-weight:900;font-size:12px;min-width:34px;text-align:center}.zoomspacer{flex:1}
-.mapviewport{width:100%;max-height:70vh;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;background:#0a0f0b;-webkit-overflow-scrolling:touch}
-.mapviewer.full .mapviewport{max-height:none;flex:1}
-.mapviewport img{display:block;width:100%;max-width:none;height:auto;transform-origin:top left}
+.spaceshipmap{width:100%;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#111;margin-top:12px}
+.spaceshipmap img{display:block;width:100%;height:auto}
+.mapchooser{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 14px}.mapchooser .btn{text-align:center}
 .updateStatus{margin-top:10px;font-size:12px;color:var(--mut)}
 .maplinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.maplinks a{text-align:center}
 .bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#0b100ded;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}.nav{border:0;background:none;color:#89938b;font-size:10px;font-weight:700;min-width:66px;padding:5px}.nav b{display:block;font-size:21px;margin-bottom:2px}.nav.on{color:var(--g)}
@@ -48,25 +44,21 @@ textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid v
 <section class="page" id="hunts"><div class="hero"><h1>🧭 Objetivos y coleccionables</h1><div class="mut">Toca cada número cuando lo completes. El progreso queda guardado en este iPhone.</div></div><div id="huntlist"></div></section>
 
 <section class="page" id="map">
-<div class="hero"><h1>🗺️ Mapa de búsqueda</h1><div class="mut">Consulta aquí las ubicaciones de los 50 saltos acrobáticos. Puedes registrar los que completes desde Objetivos.</div></div>
-<div class="hunt"><div class="hunthead"><div><h3>🏍️ Saltos acrobáticos</h3><div class="mut">Mapa de las 50 ubicaciones</div></div></div>
+<div class="hero"><h1>🗺️ Mapa de búsqueda</h1><div class="mut" id="mapIntro">Elige el objetivo cuyo mapa quieres consultar. Solo se abrirá el mapa seleccionado.</div></div>
+<div class="mapchooser"><button class="btn" onclick="showObjectiveMap('jumps')">🏍️ Saltos</button><button class="btn" onclick="showObjectiveMap('spaceship')">🛸 Piezas de nave</button></div>
+<div class="hunt hidden" data-objective-map="jumps"><div class="hunthead"><div><h3>🏍️ Saltos acrobáticos</h3><div class="mut">Mapa de las 50 ubicaciones</div></div></div>
 <div class="stuntmap" id="stuntMap"><img id="stuntMapImg" src="https://www.powerpyx.com/Assets/Maps/GTA-V/grand-theft-auto-v-monster-stunt-jump-locations-map.jpg" alt="Mapa de los 50 saltos acrobáticos de GTA V"></div>
 <div class="actions"><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div>
 <div class="note">Fuente del mapa: PowerPyx.</div></div>
-<div class="hunt"><div class="hunthead"><div><h3>🛸 Piezas de la nave</h3><div class="mut">Mapa de las 50 piezas · zoom hasta 8×</div></div></div>
-<div class="mapviewer" id="spaceshipViewer">
-<div class="zoomtools"><button class="btn" onclick="changeMapZoom('spaceship',-.5)" aria-label="Alejar mapa">−</button><span class="zoomlevel" id="spaceshipZoomLevel">1×</span><button class="btn" onclick="changeMapZoom('spaceship',.5)" aria-label="Acercar mapa">＋</button><button class="btn" onclick="setMapZoom('spaceship',8)">Máximo</button><div class="zoomspacer"></div><button class="btn primary" id="spaceshipFullBtn" onclick="toggleMapFullscreen('spaceship')">⛶ Pantalla completa</button></div>
-<div class="mapviewport" id="spaceshipViewport"><img id="spaceshipMapImg" src="./images/spaceship-parts-map.jpeg" alt="Mapa de las 50 piezas de la nave espacial de GTA V"></div>
-</div>
-<div class="actions"><button class="btn" onclick="setMapZoom('spaceship',1)">Restablecer zoom</button><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div>
-<div class="note">Usa ＋ y −, pulsa «Máximo» o abre el visor a pantalla completa. Arrastra el mapa con un dedo para desplazarte.</div></div>
-<h2>Otros objetivos</h2>
-<div class="maplinks"><a class="btn primary" target="_blank" href="https://progressbar.gg/gta5/map/">Mapa interactivo general</a><a class="btn" target="_blank" href="https://gta-5-map.com/">Mapa alternativo</a></div>
+<div class="hunt hidden" data-objective-map="spaceship"><div class="hunthead"><div><h3>🛸 Piezas de la nave</h3><div class="mut">Mapa de las 50 piezas</div></div></div>
+<div class="spaceshipmap"><img src="./images/spaceship-parts-map.jpeg" alt="Mapa de las 50 piezas de la nave espacial de GTA V"></div>
+<div class="actions"><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div></div>
+<div class="hidden" id="generalMaps"><h2>Mapa general</h2><div class="maplinks"><a class="btn primary" target="_blank" href="https://progressbar.gg/gta5/map/">Mapa interactivo general</a><a class="btn" target="_blank" href="https://gta-5-map.com/">Mapa alternativo</a></div></div>
 </section>
 
 <section class="page" id="data"><div class="hero"><h1>💾 Datos</h1><div class="mut">Copia de seguridad del progreso de trofeos y búsquedas.</div></div>
 <div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Guarda esta cadena en Notas si quieres poder restaurar el progreso.</div></div>
-<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.5</div></div>
+<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.6</div></div>
 </section>
 </main>
 <nav class="bottom"><button class="nav on" data-page="home"><b>⌂</b>Inicio</button><button class="nav" data-page="trophies"><b>🏆</b>Trofeos</button><button class="nav" data-page="hunts"><b>✓</b>Objetivos</button><button class="nav" data-page="map"><b>🗺️</b>Mapa</button><button class="nav" data-page="data"><b>⚙️</b>Datos</button></nav>
@@ -76,7 +68,7 @@ const HUNTS=[{"id": "jumps", "name": "Saltos acrobáticos", "icon": "🏍️", "
 const TKEY="gtav_ps5_trophies_v2", HKEY="gtav_hunts_v3";
 let state=JSON.parse(localStorage.getItem(TKEY)||"null")||{}; DATA.forEach(t=>{if(state[t.id]===undefined)state[t.id]=!!t.done});
 let hs=JSON.parse(localStorage.getItem(HKEY)||"null")||{}; HUNTS.forEach(h=>{if(!Array.isArray(hs[h.id]))hs[h.id]=Array(h.total).fill(false)});
-let filter="platinum";
+let filter="platinum",openHunt=null;
 function save(){localStorage.setItem(TKEY,JSON.stringify(state));localStorage.setItem(HKEY,JSON.stringify(hs));}
 function isBase(t){return t.pack==="base"} function isDlc(t){return t.pack!=="base"}
 function renderNextActions(){
@@ -112,23 +104,20 @@ function renderTrophies(){
  trophylist.innerHTML="";DATA.filter(trophyVisible).forEach(t=>{let d=document.createElement("label");d.className="item"+(state[t.id]?" done":"");d.innerHTML=`<input class="check" type="checkbox" ${state[t.id]?"checked":""}><div><div class="nm">${t.name}</div><div class="ds">${t.desc}</div><span class="tag">${t.grade}</span>${t.cat==="missable"?'<span class="tag danger">PERDIBLE</span>':""}</div>`;d.querySelector("input").onchange=e=>{state[t.id]=e.target.checked;save();renderTrophies();update()};trophylist.appendChild(d)});update();
 }
 function huntCard(h,compact=false){
- let n=hs[h.id].filter(Boolean).length,p=Math.round(n/h.total*100),d=document.createElement("div");d.className="hunt";
- d.innerHTML=`<div class="hunthead"><div><h3>${h.icon} ${h.name}</h3><div class="mut">${h.trophy}</div></div><div class="count">${n}/${h.total}</div></div><div class="mini"><i style="width:${p}%"></i></div>${compact?"":`<div class="ds">${h.note}</div><div class="numbers">${Array.from({length:h.total},(_,i)=>`<button class="num ${hs[h.id][i]?"done":""}" data-i="${i}">${i+1}</button>`).join("")}</div><div class="actions"><button class="btn" data-all="1">Marcar todo</button><button class="btn" data-clear="1">Limpiar</button><button class="btn primary" onclick="goMap()">Ver mapa</button></div>`}`;
- if(!compact){d.querySelectorAll(".num").forEach(b=>b.onclick=()=>{hs[h.id][+b.dataset.i]=!hs[h.id][+b.dataset.i];save();renderHunts();update()});d.querySelector("[data-all]").onclick=()=>{hs[h.id]=Array(h.total).fill(true);save();renderHunts();update()};d.querySelector("[data-clear]").onclick=()=>{if(!confirm(`¿Seguro que quieres limpiar todo el progreso de ${h.name}?`))return;hs[h.id]=Array(h.total).fill(false);save();renderHunts();update()}}
+ let n=hs[h.id].filter(Boolean).length,p=Math.round(n/h.total*100),d=document.createElement("div"),open=openHunt===h.id;d.className="hunt";
+ const head=compact?`<div class="hunthead"><div><h3>${h.icon} ${h.name}</h3><div class="mut">${h.trophy}</div></div><div class="count">${n}/${h.total}</div></div>`:`<button class="hunttoggle" data-toggle="1" aria-expanded="${open}"><span><h3>${h.icon} ${h.name}</h3><span class="mut">${h.trophy}</span></span><span class="right"><span class="count">${n}/${h.total}</span><span class="fold">⌄</span></span></button>`;
+ const body=`<div class="huntbody ${open?"":"hidden"}"><div class="ds">${h.note}</div><div class="numbers">${Array.from({length:h.total},(_,i)=>`<button class="num ${hs[h.id][i]?"done":""}" data-i="${i}">${i+1}</button>`).join("")}</div><div class="actions"><button class="btn" data-all="1">Marcar todo</button><button class="btn" data-clear="1">Limpiar</button><button class="btn primary" data-map="1">${["jumps","spaceship"].includes(h.id)?"Ver mapa":"Mapa general"}</button></div></div>`;
+ d.innerHTML=head+`<div class="mini"><i style="width:${p}%"></i></div>`+(compact?"":body);
+ if(!compact){d.querySelector("[data-toggle]").onclick=()=>{openHunt=open?null:h.id;renderHunts()};d.querySelectorAll(".num").forEach(b=>b.onclick=()=>{hs[h.id][+b.dataset.i]=!hs[h.id][+b.dataset.i];save();renderHunts();update()});d.querySelector("[data-all]").onclick=()=>{hs[h.id]=Array(h.total).fill(true);save();renderHunts();update()};d.querySelector("[data-clear]").onclick=()=>{if(!confirm(`¿Seguro que quieres limpiar todo el progreso de ${h.name}?`))return;hs[h.id]=Array(h.total).fill(false);save();renderHunts();update()};d.querySelector("[data-map]").onclick=()=>goMap(h.id)}
  return d;
 }
 function renderHunts(){huntlist.innerHTML="";HUNTS.forEach(h=>huntlist.appendChild(huntCard(h)));homehunts.innerHTML="";HUNTS.slice(0,4).forEach(h=>homehunts.appendChild(huntCard(h,true)));update()}
-function goMap(){document.querySelector('[data-page="map"]').click()}
-const mapZoom={spaceship:1};
-function setMapZoom(id,value){
- const viewport=document.getElementById(id+"Viewport"),img=document.getElementById(id+"MapImg"),level=document.getElementById(id+"ZoomLevel");if(!viewport||!img)return;
- const old=mapZoom[id]||1,cx=(viewport.scrollLeft+viewport.clientWidth/2)/Math.max(viewport.scrollWidth,1),cy=(viewport.scrollTop+viewport.clientHeight/2)/Math.max(viewport.scrollHeight,1);
- const next=Math.max(1,Math.min(8,Math.round(value*2)/2));mapZoom[id]=next;img.style.width=(next*100)+"%";if(level)level.textContent=next+"×";
- requestAnimationFrame(()=>{viewport.scrollLeft=Math.max(0,cx*viewport.scrollWidth-viewport.clientWidth/2);viewport.scrollTop=Math.max(0,cy*viewport.scrollHeight-viewport.clientHeight/2)});
+function showObjectiveMap(id){
+ const own=["jumps","spaceship"].includes(id);document.querySelectorAll("[data-objective-map]").forEach(x=>x.classList.toggle("hidden",x.dataset.objectiveMap!==id));generalMaps.classList.toggle("hidden",own||!id);
+ const h=HUNTS.find(x=>x.id===id);mapIntro.textContent=id?(own?`Mostrando únicamente el mapa de ${h.name}.`:`Mapa general para buscar ${h?.name||"este objetivo"}.`):"Elige el objetivo cuyo mapa quieres consultar. Solo se abrirá el mapa seleccionado.";scrollTo(0,0);
 }
-function changeMapZoom(id,amount){setMapZoom(id,(mapZoom[id]||1)+amount)}
-function toggleMapFullscreen(id){const viewer=document.getElementById(id+"Viewer"),btn=document.getElementById(id+"FullBtn");if(!viewer)return;viewer.classList.toggle("full");const full=viewer.classList.contains("full");if(btn)btn.textContent=full?"✕ Cerrar":"⛶ Pantalla completa";document.body.style.overflow=full?"hidden":""}
-document.querySelector(".bottom").onclick=e=>{let b=e.target.closest(".nav");if(!b)return;document.querySelectorAll(".nav").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(b.dataset.page).classList.add("on");scrollTo(0,0)};
+function goMap(id){document.querySelector('[data-page="map"]').click();showObjectiveMap(id)}
+document.querySelector(".bottom").onclick=e=>{let b=e.target.closest(".nav");if(!b)return;document.querySelectorAll(".nav").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(b.dataset.page).classList.add("on");if(b.dataset.page==="map")showObjectiveMap(null);scrollTo(0,0)};
 filters.onclick=e=>{if(!e.target.dataset.f)return;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));e.target.classList.add("on");filter=e.target.dataset.f;renderTrophies()};search.oninput=renderTrophies;
 function exportData(){backup.value=btoa(unescape(encodeURIComponent(JSON.stringify({t:state,h:hs}))));backup.select();navigator.clipboard?.writeText(backup.value)}
 function importData(){try{let x=JSON.parse(decodeURIComponent(escape(atob(backup.value.trim()))));state=x.t||state;hs=x.h||hs;save();renderTrophies();renderHunts();alert("Progreso importado")}catch(e){alert("Copia no válida")}}
@@ -136,7 +125,7 @@ save();renderTrophies();renderHunts();
 let swReg=null, reloading=false;
 async function checkForUpdate(){
  const s=document.getElementById("updateStatus"),b=document.getElementById("updateBtn"); if(b)b.disabled=true;if(s)s.textContent="Buscando actualización…";
- try{if(!("serviceWorker" in navigator))throw new Error("No compatible");swReg=swReg||await navigator.serviceWorker.getRegistration()||await navigator.serviceWorker.register("./service-worker.js");await swReg.update();setTimeout(()=>{if(s)s.textContent="La aplicación está actualizada · v3.5";if(b)b.disabled=false},1200)}
+ try{if(!("serviceWorker" in navigator))throw new Error("No compatible");swReg=swReg||await navigator.serviceWorker.getRegistration()||await navigator.serviceWorker.register("./service-worker.js");await swReg.update();setTimeout(()=>{if(s)s.textContent="La aplicación está actualizada · v3.6";if(b)b.disabled=false},1200)}
  catch(e){if(s)s.textContent="No se pudo comprobar. Revisa la conexión.";if(b)b.disabled=false}
 }
 if("serviceWorker" in navigator){
