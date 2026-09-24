@@ -51,14 +51,15 @@ textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid v
 <div class="actions"><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div>
 <div class="note">Fuente del mapa: PowerPyx.</div></div>
 <div class="hunt hidden" data-objective-map="spaceship"><div class="hunthead"><div><h3>🛸 Piezas de la nave</h3><div class="mut">Mapa de las 50 piezas</div></div></div>
-<div class="spaceshipmap"><img src="./images/spaceship-parts-map.jpeg" alt="Mapa de las 50 piezas de la nave espacial de GTA V"></div>
+<div class="spaceshipmap"><img src="./images/spaceship-parts-map-clear.png" alt="Mapa de las 50 piezas de la nave espacial de GTA V, numeradas del 1 al 50"></div>
+<div class="mut" style="margin-top:8px">Mapa con numeración de <a href="https://www.faxagate.com/en/gaming/gta-5-spaceship-parts" target="_blank" rel="noopener">Faxagate</a>.</div>
 <div class="actions"><button class="btn primary" onclick="document.querySelector('[data-page=\'hunts\']').click()">Ver lista 1–50</button></div></div>
 <div class="hidden" id="generalMaps"><h2>Mapa general</h2><div class="maplinks"><a class="btn primary" target="_blank" href="https://progressbar.gg/gta5/map/">Mapa interactivo general</a><a class="btn" target="_blank" href="https://gta-5-map.com/">Mapa alternativo</a></div></div>
 </section>
 
 <section class="page" id="data"><div class="hero"><h1>💾 Datos</h1><div class="mut">Copia de seguridad del progreso de trofeos y búsquedas.</div></div>
 <div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Guarda esta cadena en Notas si quieres poder restaurar el progreso.</div></div>
-<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.6</div></div>
+<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.7</div></div>
 </section>
 </main>
 <nav class="bottom"><button class="nav on" data-page="home"><b>⌂</b>Inicio</button><button class="nav" data-page="trophies"><b>🏆</b>Trofeos</button><button class="nav" data-page="hunts"><b>✓</b>Objetivos</button><button class="nav" data-page="map"><b>🗺️</b>Mapa</button><button class="nav" data-page="data"><b>⚙️</b>Datos</button></nav>
