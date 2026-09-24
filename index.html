@@ -57,8 +57,8 @@ textarea{width:100%;height:90px;background:#0a0f0b;color:#ddd;border:1px solid v
 </section>
 
 <section class="page" id="data"><div class="hero"><h1>💾 Datos</h1><div class="mut">Copia de seguridad del progreso de trofeos y búsquedas.</div></div>
-<div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Guarda esta cadena en Notas si quieres poder restaurar el progreso.</div></div>
-<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.8</div></div>
+<div class="card"><button class="btn primary" onclick="exportData()">Generar copia</button> <button class="btn" onclick="shareData()">📤 Compartir copia</button> <button class="btn" onclick="importData()">Importar</button><textarea id="backup" placeholder="Copia de seguridad…"></textarea><div class="note">Puedes compartir la copia directamente con WhatsApp, Notas u otra aplicación.</div></div>
+<div class="card"><h3>Actualizaciones</h3><div class="mut">Busca una versión nueva y la instala sin tener que borrar la PWA ni perder tu progreso.</div><button class="btn primary" id="updateBtn" onclick="checkForUpdate()">🔄 Buscar actualización</button><div class="updateStatus" id="updateStatus">Versión 3.9</div></div>
 </section>
 </main>
 <nav class="bottom"><button class="nav on" data-page="home"><b>⌂</b>Inicio</button><button class="nav" data-page="trophies"><b>🏆</b>Trofeos</button><button class="nav" data-page="hunts"><b>✓</b>Objetivos</button><button class="nav" data-page="map"><b>🗺️</b>Mapa</button><button class="nav" data-page="data"><b>⚙️</b>Datos</button></nav>
@@ -119,7 +119,9 @@ function showObjectiveMap(id){
 function goMap(id){document.querySelector('[data-page="map"]').click();showObjectiveMap(id)}
 document.querySelector(".bottom").onclick=e=>{let b=e.target.closest(".nav");if(!b)return;document.querySelectorAll(".nav").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));document.getElementById(b.dataset.page).classList.add("on");if(b.dataset.page==="map")showObjectiveMap(null);scrollTo(0,0)};
 filters.onclick=e=>{if(!e.target.dataset.f)return;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));e.target.classList.add("on");filter=e.target.dataset.f;renderTrophies()};search.oninput=renderTrophies;
-function exportData(){backup.value=btoa(unescape(encodeURIComponent(JSON.stringify({t:state,h:hs}))));backup.select();navigator.clipboard?.writeText(backup.value)}
+function makeBackup(){return btoa(unescape(encodeURIComponent(JSON.stringify({t:state,h:hs}))))}
+function exportData(){backup.value=makeBackup();backup.select();navigator.clipboard?.writeText(backup.value)}
+async function shareData(){let copy=makeBackup();backup.value=copy;let text=`Copia de seguridad de GTA V Trophies\n\n${copy}`;if(navigator.share){try{await navigator.share({title:'Copia de seguridad GTA V Trophies',text});return}catch(e){if(e.name==='AbortError')return}}try{await navigator.clipboard.writeText(copy);alert('No se pudo abrir el menú para compartir. La copia se ha guardado en el portapapeles.')}catch(e){backup.focus();backup.select();alert('No se pudo abrir el menú para compartir. Mantén pulsada la copia para copiarla.')}}
 function importData(){try{let x=JSON.parse(decodeURIComponent(escape(atob(backup.value.trim()))));state=x.t||state;hs=x.h||hs;save();renderTrophies();renderHunts();alert("Progreso importado")}catch(e){alert("Copia no válida")}}
 save();renderTrophies();renderHunts();
 let swReg=null, reloading=false;
